@@ -1,9 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:taskati/core/contants/image_app.dart';
-import 'package:taskati/core/services/local_helper.dart';
+import 'package:intl/intl.dart';
+import 'package:taskati/core/function/navigation.dart';
 import 'package:taskati/core/utils/colors.dart';
 import 'package:taskati/core/utils/text_styles.dart';
+import 'package:taskati/core/widgets/main_button.dart';
+import 'package:taskati/features/add_task/add_task_screen.dart';
 
 class TodayHeader extends StatelessWidget {
   const TodayHeader({
@@ -19,20 +20,23 @@ class TodayHeader extends StatelessWidget {
        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-              Text(DateTime.now().toString().substring(0,10),
-                style:TextStyles.titlestyle(fontSize: 20)
+          Text(
+              DateFormat.yMMMMd().format(DateTime.now()),
+                style:TextStyles.titlestyle(fontSize: 20, color: AppColors.darkColor)
               ),
                 Text('Today',
                    style:TextStyles.bodystyle(color: AppColors.darkColor,fontSize: 20)),
         ],
        ),
      ),
-      CircleAvatar(radius: 30,
-              backgroundColor: AppColors.primaryColor,
-              backgroundImage:LocalHelper.getData(LocalHelper.kImage) != null
-              ?FileImage(File(LocalHelper.getData(LocalHelper.kImage))):
-               AssetImage(ImageApp.user),
-              ),
+      MainButton(
+        text: '+ Add Task',
+        width: 140,
+        height: 40,
+        onPressed: () {
+        pushTo(context, AddTaskScreen());
+        },
+      ),
     ],
     );
   }

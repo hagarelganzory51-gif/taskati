@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:taskati/features/home/widgets/home_header.dart';
+import 'package:taskati/features/home/widgets/today_header.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,6 +15,8 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
             HomeHeader(),
+            Gap(30),
+            TodayHeader(),
             
             ],
           ),
