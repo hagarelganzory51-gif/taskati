@@ -5,8 +5,8 @@ import 'package:taskati/core/services/local_helper.dart';
 import 'package:taskati/core/utils/colors.dart';
 import 'package:taskati/core/utils/text_styles.dart';
 
-class HomeHeader extends StatelessWidget {
-  const HomeHeader({
+class TodayHeader extends StatelessWidget {
+  const TodayHeader({
     super.key,
   });
 
@@ -19,10 +19,10 @@ class HomeHeader extends StatelessWidget {
        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-              Text(LocalHelper.getData(LocalHelper.kName),
+              Text(DateTime.now().toString().substring(0,10),
                 style:TextStyles.titlestyle(fontSize: 20)
               ),
-                Text('Have a nice day',
+                Text('Today',
                    style:TextStyles.bodystyle(color: AppColors.darkColor,fontSize: 20)),
         ],
        ),
